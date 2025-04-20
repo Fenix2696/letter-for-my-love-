@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9e6e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to right, rgba(249, 230, 232, 0.8), rgba(249, 230, 232, 0.8));
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+  }
+  
+  .envelope-wrapper {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    margin: 0 auto;
+  }
+  
+  /* Estilos para el sobre */
+  .envelope {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #e74c3c;
+    border-radius: 5px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  /* Postal en la esquina superior derecha */
+  .postal-corner {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 60px;
+    height: 60px;
+    z-index: 20;
+  }
+  
+  .postal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  /* Solapa del sobre */
+  .envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background-color: #c0392b;
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transition: transform 0.5s ease-in-out;
+    transform-origin: top;
+    z-index: 15;
+  }
+  
+  .envelope.open .envelope-flap {
+    transform: translateY(-100px);
+  }
+  
+  /* Contenido del sobre */
+  .envelope-content {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background-color: #e74c3c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+  }
+  
+  .envelope.open .envelope-content {
+    opacity: 0.5;
+  }
+  
+  .to-from {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+  }
+  
+  .to, .from {
+    margin: 10px 0;
+  }
+  
+  /* Estilos para la carta */
+  .letter {
+    position: absolute;
+    width: 90%;
+    height: 80%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    left: 5%;
+    top: 10%;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(110%);
+    transition: opacity 0.6s, transform 0.8s;
+    z-index: 10;
+    pointer-events: none;
+  }
+  
+  .letter.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  .letter-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .heart-icon {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .message {
+    text-align: center;
+    font-size: 18px;
+    color: #e74c3c;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .flowers {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .flowers-img {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  /* Animación de corazones flotantes */
+  .hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    overflow: hidden;
+  }
+  
+  .floating-heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 24px;
+    animation: floatUp linear forwards;
+  }
+  
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) rotate(0deg) scale(0.3);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(-100vh) rotate(360deg) scale(1);
+      opacity: 0;
+    }
+  }
